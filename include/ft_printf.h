@@ -6,4 +6,8 @@
 #include <unistd.h>
 #include "structs.h"
 
+#include <stdio.h> // TODO : Remove
+
+int	ft_printf(const char *format, ...);
+
 #endif

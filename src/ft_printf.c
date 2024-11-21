@@ -6,8 +6,14 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:21:42 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/21 17:22:14 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/11/21 17:37:19 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+int	ft_printf(const char *format, ...)
+{
+	(void) format;
+	return (0);
+}

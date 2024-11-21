@@ -6,16 +6,16 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:01:25 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/21 17:09:32 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/11/21 17:38:21 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../include/ft_printf.h"
 
 int	main()
 {
-	__intmax_t n = 1234567154454548912;
-	printf("%jd", n);
+	printf("%d\n", 42);
+	ft_printf("%d\n", 42);
 
 	return (0);
 }
