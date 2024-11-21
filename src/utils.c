@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 17:21:42 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/21 19:34:51 by ezeppa           ###   ########.fr       */
+/*   Created: 2024/11/21 19:43:59 by ezeppa            #+#    #+#             */
+/*   Updated: 2024/11/21 19:45:07 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-
-int	ft_printf(const char *str, ...)
+static int	ft_isdigit(int c)
 {
-	va_list	args;
-	// int		count;
-
-	va_start(args, str);
-	s_format	*format;
-	format = init_format(&str);
-	printf("PLS = %s", str);
-	// count = 0;
-	// while (TRUE)
-	// {
-	// 	if (process_buffer(str, args) == -1)
-	// 		break;
-	// }
-	va_end(args);
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	int	nb;
+	int	sign;
+
+	nb = 0;
+	sign = 1;
+	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
+	{
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
+	}
+	while (ft_isdigit(*nptr))
+	{
+		nb = nb * 10 + (*nptr - '0');
+		nptr++;
+	}
+	return (sign * nb);
 }

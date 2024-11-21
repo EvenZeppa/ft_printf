@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 17:21:42 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/21 19:34:51 by ezeppa           ###   ########.fr       */
+/*   Created: 2024/11/21 19:44:28 by ezeppa            #+#    #+#             */
+/*   Updated: 2024/11/21 19:45:14 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	ft_printf(const char *str, ...)
-{
-	va_list	args;
-	// int		count;
+int	ft_atoi(const char *nptr);
 
-	va_start(args, str);
-	s_format	*format;
-	format = init_format(&str);
-	printf("PLS = %s", str);
-	// count = 0;
-	// while (TRUE)
-	// {
-	// 	if (process_buffer(str, args) == -1)
-	// 		break;
-	// }
-	va_end(args);
-	return (0);
-}
+#endif

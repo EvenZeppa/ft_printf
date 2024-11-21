@@ -1,7 +1,9 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Iinclude/
 SRC_DIR = src/
-SRCS = ${SRC_DIR}ft_printf.c
+SRCS =	${SRC_DIR}ft_printf.c\
+		${SRC_DIR}format.c\
+		${SRC_DIR}utils.c
 OBJS = ${SRCS:.c=.o}
 NAME = libftprintf.a
 

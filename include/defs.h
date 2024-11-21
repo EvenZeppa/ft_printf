@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 17:21:42 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/21 19:34:51 by ezeppa           ###   ########.fr       */
+/*   Created: 2024/11/21 18:21:03 by ezeppa            #+#    #+#             */
+/*   Updated: 2024/11/21 18:56:14 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#ifndef DEFS_H
+# define DEFS_H
 
-int	ft_printf(const char *str, ...)
-{
-	va_list	args;
-	// int		count;
+// Boolean
+# define FALSE 0
+# define TRUE 1
 
-	va_start(args, str);
-	s_format	*format;
-	format = init_format(&str);
-	printf("PLS = %s", str);
-	// count = 0;
-	// while (TRUE)
-	// {
-	// 	if (process_buffer(str, args) == -1)
-	// 		break;
-	// }
-	va_end(args);
-	return (0);
-}
+// Buffer
+# define BUFER_SIZE 10
+
+// Flags
+# define FLAG_MINUS '-'
+# define FLAG_PLUS '+'
+# define FLAG_SPACE ' '
+# define FLAG_HASH '#'
+# define FLAG_ZERO '0'
+
+#endif
