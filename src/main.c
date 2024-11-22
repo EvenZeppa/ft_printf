@@ -14,8 +14,13 @@
 
 int	main()
 {
-	printf("'% 04d'\n", -1);
-	ft_printf("'% 04d'\n", -1);
+	int	x = 99999;
+	// printf("'%-6d'\n", 123);
+	// printf("%06x\n", 123);
+	// printf("'%6.4d'\n", -23);
+	// ft_printf("'%6.4d'\n", -23);
+	printf("\n%d\n", printf("'%2c' '%-10.0s'  %% '%p'", 'c', "azertyui", (void *)&x));
+	printf("\n%d\n", ft_printf("'%2c' '%-10.0s'  %% %% %d", 'c', "azertyui", &x));
 
 	return (0);
 }

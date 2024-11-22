@@ -18,6 +18,7 @@ int	ft_printf(const char *str, ...)
 	int		count;
 
 	va_start(args, str);
+	count = 0;
 	while (*str)
 	{
 		if (*str == '%')
@@ -26,8 +27,10 @@ int	ft_printf(const char *str, ...)
 			count += process_arg(&str, &args);
 		}
 		else
+		{
 			count += ft_putchar(*str);
-		str++;
+			str++;
+		}
 	}	
 	va_end(args);
 	return (count);

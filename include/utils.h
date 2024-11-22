@@ -13,7 +13,14 @@
 #ifndef UTILS_H
 # define UTILS_H
 
-int	ft_putchar(char c);
-int	ft_atoi(const char *nptr);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	*ft_strjoin(const char *s1, const char *s2);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+void	*ft_memset(void *s, int c, size_t n);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_atoi(const char *nptr);
+char	*ft_itoa(int n);
 
 #endif

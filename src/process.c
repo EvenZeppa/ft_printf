@@ -12,12 +12,6 @@
 
 #include "../include/ft_printf.h"
 
-static int	check_format(s_format *format)
-{
-	(void) format;
-	return (1);
-}
-
 int	process_arg(const char **str, va_list *args)
 {
 	s_format	*format;
@@ -38,10 +32,10 @@ int	process_arg(const char **str, va_list *args)
 	else if (format->specifier == 'u')
 		count = print_u(format, (unsigned int)va_arg(*args, long));
 	else if (format->specifier == 'x')
-		count = print_x(format, va_arg(*args, int), FALSE);
+		count = print_x(format, va_arg(*args, unsigned long), FALSE);
 	else if (format->specifier == 'X')
-		count = print_x(format, va_arg(*args, int), TRUE);
+		count = print_x(format, va_arg(*args, unsigned long), TRUE);
 	else if (format->specifier == '%')
-		count = print_percent(format, va_arg(*args, char));
+		count = ft_putchar('%');
 	return (free(format), count);
 }
