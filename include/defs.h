@@ -17,9 +17,6 @@
 # define FALSE 0
 # define TRUE 1
 
-// Buffer
-# define BUFER_SIZE 10
-
 // Flags
 # define FLAG_MINUS '-'
 # define FLAG_PLUS '+'
