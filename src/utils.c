@@ -10,6 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/ft_printf.h"
+
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+
 static int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')

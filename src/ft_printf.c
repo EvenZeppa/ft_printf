@@ -15,18 +15,20 @@
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	// int		count;
+	int		count;
 
 	va_start(args, str);
-	s_format	*format;
-	format = init_format(&str);
-	printf("PLS = %s", str);
-	// count = 0;
-	// while (TRUE)
-	// {
-	// 	if (process_buffer(str, args) == -1)
-	// 		break;
-	// }
+	while (*str)
+	{
+		if (*str == '%')
+		{
+			str++;
+			count += process_arg(&str, &args);
+		}
+		else
+			count += ft_putchar(*str);
+		str++;
+	}	
 	va_end(args);
-	return (0);
+	return (count);
 }

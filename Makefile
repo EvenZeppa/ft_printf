@@ -1,9 +1,10 @@
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra -Iinclude/
 SRC_DIR = src/
 SRCS =	${SRC_DIR}ft_printf.c\
 		${SRC_DIR}format.c\
-		${SRC_DIR}utils.c
+		${SRC_DIR}utils.c\
+		${SRC_DIR}process.c
 OBJS = ${SRCS:.c=.o}
 NAME = libftprintf.a
 
@@ -24,4 +25,4 @@ fclean : clean
 re : fclean all
 
 main :
-	${CC} ${CFLAGS} ${SRCS} src/main.c -o ft_printf && ./ft_printf
+	${CC} ${CFLAGS} ${SRCS} src/main.c -o ft_printf.exe && ./ft_printf.exe

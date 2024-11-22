@@ -24,7 +24,7 @@
 
 int	ft_printf(const char *format, ...);
 
-int	process_buffer(const char *str, va_list args);
+int	process_arg(const char **str, va_list *args);
 
 s_format	*init_format(const char **ptr);
 

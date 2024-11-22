@@ -60,10 +60,7 @@ static int	add_precision(s_format *format, const char *ptr)
 	int count;
 
 	if (*ptr != '.')
-	{
-		format->precision = -1;
 		return (0);
-	}
 	ptr++;
 	nb = ft_atoi(ptr);
 	format->precision = nb;
@@ -99,6 +96,14 @@ s_format	*init_format(const char **ptr)
 	format = malloc(sizeof(s_format));
 	if (!format)
 		return (NULL);
+	format->flag_minus = FALSE;
+	format->flag_plus = FALSE;
+	format->flag_space = FALSE;
+	format->flag_hash = FALSE;
+	format->flag_zero = FALSE;
+	format->width = FALSE;
+	format->precision = -1;
+	format->specifier = 0;
 	*ptr += add_flags(format, *ptr);
 	*ptr += add_width(format, *ptr);
 	*ptr += add_precision(format, *ptr);
