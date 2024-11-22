@@ -31,14 +31,15 @@ int	print_s(s_format *format, char *str)
 {
 	char	*res;
 	int		count;
+	int		size;
 
 	if (format->precision != -1 && format->precision < (int)ft_strlen(str))
-	{
-		res = malloc(sizeof(char) * (format->precision));
-		ft_strlcpy(res, str, (format->precision + 1));
-		str = res;
-	}
-	res = formatted_width_minus_zero(str, format->width, format->flag_minus, 0);
+		size = format->precision;
+	else
+		size = ft_strlen(str) + 1;
+	res = malloc(sizeof(char) * size);
+	ft_strlcpy(res, str, (size + 1));
+	res = formatted_width_minus_zero(res, format->width, format->flag_minus, 0);
 	count = ft_putstr(res);
 	return (free(res), count);
 }
@@ -48,7 +49,15 @@ int	print_d_i(s_format *format, int nb)
 	char	*res;
 	int		count;
 
+	if (nb == 0 && format->precision == 0)
+		return (0);
 	res = ft_itoa(nb);
+	if (format->flag_zero && format->width > (int)ft_strlen(res))
+	{
+		res = formatted_number_precision(&res[nb < 0], format->width, 0, 0);
+		if (nb < 0)
+			res[0] = '-';
+	}
 	res = formatted_number_precision(res, format->precision, format->flag_plus, format->flag_space);
 	if (format->width > (int)ft_strlen(res))
 		res = formatted_width_minus_zero(res, format->width, format->flag_minus, format->flag_zero);

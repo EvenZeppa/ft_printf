@@ -24,18 +24,19 @@ int	process_arg(const char **str, va_list *args)
 	if (format->specifier == 'c')
 		count = print_c(format, (char)va_arg(*args, int));
 	else if (format->specifier == 's')
-		count = print_s(format, va_arg(*args, char*));
+		count = print_s(format, va_arg(*args, char *));
 	else if (format->specifier == 'p')
-		count = print_p(format, va_arg(*args, void*));
+		count = print_p(format, va_arg(*args, void *));
 	else if (format->specifier == 'd' || format->specifier == 'i')
 		count = print_d_i(format, va_arg(*args, int));
 	else if (format->specifier == 'u')
 		count = print_u(format, (unsigned int)va_arg(*args, long));
 	else if (format->specifier == 'x')
-		count = print_x(format, va_arg(*args, unsigned long), FALSE);
+		count = print_x(format, va_arg(*args, unsigned int), FALSE);
 	else if (format->specifier == 'X')
-		count = print_x(format, va_arg(*args, unsigned long), TRUE);
+		count = print_x(format, va_arg(*args, unsigned int), TRUE);
 	else if (format->specifier == '%')
 		count = ft_putchar('%');
+
 	return (free(format), count);
 }

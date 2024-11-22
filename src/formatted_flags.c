@@ -45,7 +45,7 @@ char	*formatted_number_precision(char *str, int precision, int has_plus, int has
 	if (precision != -1 && len < precision)
 		formatted_len = precision - len + (*str == '-' || (has_plus || has_space));
 	else if (precision == -1)
-		formatted_len = 0;
+		formatted_len = (*str == '-');
 	else 
 		formatted_len = 1;
 	ptr = malloc(sizeof(char) * (formatted_len + 1));
