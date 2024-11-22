@@ -110,24 +110,5 @@ s_format	*init_format(const char **ptr)
 	*ptr += add_width(format, *ptr);
 	*ptr += add_precision(format, *ptr);
 	*ptr += add_specifier(format, *ptr);
-
-	// printf(
-	// 	"Flag minus = %d\n"
-	// 	"Flag plus = %d\n"
-	// 	"Flag space = %d\n"
-	// 	"Flag hash = %d\n"
-	// 	"Flag zero = %d\n"
-	// 	"Width = %d\n"
-	// 	"Precision = %d\n"
-	// 	"Specifier = %c\n",
-	// 	format->flag_minus,
-	// 	format->flag_plus,
-	// 	format->flag_space,
-	// 	format->flag_hash,
-	// 	format->flag_zero,
-	// 	format->width,
-	// 	format->precision,
-	// 	format->specifier
-	// );
 	return (format);
 }

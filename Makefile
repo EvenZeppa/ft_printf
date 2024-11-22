@@ -4,7 +4,8 @@ SRC_DIR = src/
 SRCS =	${SRC_DIR}ft_printf.c\
 		${SRC_DIR}format.c\
 		${SRC_DIR}utils.c\
-		${SRC_DIR}process.c\
+		${SRC_DIR}utils1.c\
+		${SRC_DIR}utils2.c\
 		${SRC_DIR}print.c\
 		${SRC_DIR}print1.c\
 		${SRC_DIR}formatted_flags.c
