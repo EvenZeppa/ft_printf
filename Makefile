@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -Iinclude/
+CFLAGS = -Iinclude/
+# CFLAGS = -Wall -Werror -Wextra -Iinclude/
 SRC_DIR = src/
 SRCS =	${SRC_DIR}ft_printf.c\
 		${SRC_DIR}format.c\

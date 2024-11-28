@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 11:56:34 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/22 11:56:34 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:11:42 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,18 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		return (ptr);
 	ft_strlcpy(ptr, s1, s1_len + 1);
 	ft_strlcat(ptr, s2, s1_len + s2_len + 1);
+	return (ptr);
+}
+
+char	*ft_strdup(const char *s)
+{
+	int		s_len;
+	char	*ptr;
+
+	s_len = ft_strlen(s);
+	ptr = malloc(sizeof(char) * s_len + 1);
+	if (!ptr)
+		return (ptr);
+	ft_strlcpy(ptr, s, s_len + 1);
 	return (ptr);
 }

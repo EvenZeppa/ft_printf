@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 01:48:56 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/22 01:48:56 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:04:35 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ int	print_s(s_format *format, char *str)
 	int		count;
 	int		size;
 
-	if (format->precision != -1 && format->precision < (int)ft_strlen(str))
+	if (!str && format->precision == -1)
+		size = 7;
+	else if (format->precision != -1 && format->precision < (int)ft_strlen(str))
 		size = format->precision;
 	else
 		size = ft_strlen(str) + 1;
 	res = malloc(sizeof(char) * size);
-	ft_strlcpy(res, str, (size + 1));
+	if (!str && format->precision == -1)
+		ft_strlcpy(res, "(null)", (size + 1));
+	else
+		ft_strlcpy(res, str, (size + 1));
 	res = formatted_width_minus_zero(res, format->width, format->flag_minus, 0);
 	count = ft_putstr(res);
 	return (free(res), count);

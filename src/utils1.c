@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 11:56:32 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/22 11:56:32 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:01:26 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ char	*convert_to_hexa(unsigned long long nb, char *base)
 	while (size > 0)
 	{
 		size--;
-		res[size] = base[(nb % 16) - 1];
+		res[size] = base[(nb % 16)];
 		nb /= 16;
 	}
 	return (res);
 }
 
-static int	int_size(int n)
+static long	long_size(long n)
 {
-	int		len;
+	int	len;
 
 	len = 0;
 	if (n == -2147483648)
@@ -68,7 +68,7 @@ static int	int_size(int n)
 	return (len);
 }
 
-static void	ft_recursive(char *s, int n, int i)
+static void	ft_recursive(char *s, long n, int i)
 {
 	if (n < 0)
 	{
@@ -84,7 +84,7 @@ static void	ft_recursive(char *s, int n, int i)
 		s[i] = n + '0';
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	char	*ptr;
 
@@ -96,10 +96,10 @@ char	*ft_itoa(int n)
 		ft_strlcpy(ptr, "-2147483648", 12);
 		return (ptr);
 	}
-	ptr = malloc(sizeof(char) * (int_size(n) + 1));
+	ptr = malloc(sizeof(char) * (long_size(n) + 1));
 	if (!ptr)
 		return (NULL);
-	ft_recursive(ptr, n, (int_size(n) - 1));
-	ptr[int_size(n)] = '\0';
+	ft_recursive(ptr, n, (long_size(n) - 1));
+	ptr[long_size(n)] = '\0';
 	return (ptr);
 }

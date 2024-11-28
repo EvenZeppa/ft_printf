@@ -6,7 +6,7 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:21:42 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/21 19:34:51 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/11/28 20:53:26 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	process_arg(const char **str, va_list *args)
 	else if (format->specifier == 'd' || format->specifier == 'i')
 		count = print_d_i(format, va_arg(*args, int));
 	else if (format->specifier == 'u')
-		count = print_u(format, (unsigned int)va_arg(*args, long));
+		count = print_u(format, (unsigned int)va_arg(*args, unsigned int));
 	else if (format->specifier == 'x')
 		count = print_x(format, va_arg(*args, unsigned int), FALSE);
 	else if (format->specifier == 'X')
@@ -60,7 +60,7 @@ int	ft_printf(const char *str, ...)
 			count += ft_putchar(*str);
 			str++;
 		}
-	}	
+	}
 	va_end(args);
 	return (count);
 }
