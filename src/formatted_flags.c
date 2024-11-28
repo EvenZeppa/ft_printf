@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   formatted_flags.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 02:29:09 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/22 02:29:09 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/29 00:26:46 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char	*formatted_width_minus_zero(char *str, int width, int has_minus, int has_zero)
+char	*formatted_width_minus_zero(
+	char *str, int width, int has_minus, int has_zero)
 {
 	char	*ptr;
 	char	*res;
 	int		len;
 
 	len = (int)ft_strlen(str);
-	if (len > width)
+	if (width == 0 || len > width)
 		return (str);
 	ptr = malloc(sizeof(char) * (width - len + 1));
 	if (has_minus || !has_zero)
@@ -34,7 +35,8 @@ char	*formatted_width_minus_zero(char *str, int width, int has_minus, int has_ze
 	return (free(ptr), res);
 }
 
-char	*formatted_number_precision(char *str, int precision, int has_plus, int has_space)
+char	*formatted_number_precision(
+	char *str, int precision, int has_plus, int has_space)
 {
 	char	*ptr;
 	char	*res;
@@ -43,11 +45,12 @@ char	*formatted_number_precision(char *str, int precision, int has_plus, int has
 
 	len = (int)ft_strlen(str) - (*str == '-');
 	if (precision != -1 && len < precision)
-		formatted_len = precision - len + (*str == '-' || (has_plus || has_space));
+		formatted_len = precision - len
+			+ (*str == '-' || (has_plus || has_space));
 	else if (precision == -1)
 		formatted_len = (*str == '-');
-	else 
-		formatted_len = 1;
+	else
+		formatted_len = 0;
 	ptr = malloc(sizeof(char) * (formatted_len + 1));
 	ptr = ft_memset(ptr, '0', (formatted_len + 1));
 	ptr[formatted_len] = '\0';

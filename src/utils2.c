@@ -6,18 +6,11 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 11:56:34 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/28 21:11:42 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/11/29 00:32:20 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
 int	ft_atoi(const char *nptr)
 {
@@ -34,7 +27,7 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		nptr++;
 	}
-	while (ft_isdigit(*nptr))
+	while (*nptr >= '0' && *nptr <= '9')
 	{
 		nb = nb * 10 + (*nptr - '0');
 		nptr++;

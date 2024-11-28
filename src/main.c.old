@@ -6,13 +6,14 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:01:25 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/28 21:07:54 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/11/29 00:25:38 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
 #include <limits.h>
+#include <stdio.h>
 
 int main(void) {
     char c = 'A';
@@ -27,8 +28,13 @@ int main(void) {
     // Test pour chaque format avec différents flags
     printf("Testing ft_printf with various formats and flags:\n\n");
 
-	printf(" %p %p \n", 0, 0);
-	ft_printf(" %p %p \n", 0, 0);
+	printf("%039.X%016.107d%--21.191u%150p%182.51X" ,2610724162u,245663213,2219307853u,(void*)4773627628446649932lu,2179133818u);
+	printf("|\n");
+	ft_printf("%039.X%016.107d%--21.191u%150p%182.51X" ,2610724162u,245663213,2219307853u,(void*)4773627628446649932lu,2179133818u);
+	printf("|\n");
+
+	// printf(" %.1d \n", 0);
+	// ft_printf(" %.1d ", 0);
 
     // printf("Character (%%c):\n");
     // ft_printf("Normal: |%c|\n", c);

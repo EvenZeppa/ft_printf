@@ -6,18 +6,18 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:39:22 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/21 20:02:23 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/11/29 00:27:25 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	add_flags(s_format *format, const char *ptr)
+static int	add_flags(t_format *format, const char *ptr)
 {
 	int	i;
 
 	i = 0;
-	while(TRUE)
+	while (TRUE)
 	{
 		if (ptr[i] == FLAG_MINUS)
 			format->flag_minus = TRUE;
@@ -36,10 +36,10 @@ static int	add_flags(s_format *format, const char *ptr)
 	return (i);
 }
 
-static int	add_width(s_format *format, const char *ptr)
+static int	add_width(t_format *format, const char *ptr)
 {
 	int	nb;
-	int count;
+	int	count;
 
 	nb = ft_atoi(ptr);
 	if (!nb && *ptr != '0')
@@ -54,19 +54,22 @@ static int	add_width(s_format *format, const char *ptr)
 	return (count);
 }
 
-static int	add_precision(s_format *format, const char *ptr)
+static int	add_precision(t_format *format, const char *ptr)
 {
 	int	nb;
-	int count;
+	int	count;
 
 	if (*ptr != '.')
 		return (0);
 	ptr++;
+	count = 1;
+	while (*ptr == '0')
+	{
+		ptr++;
+		count++;
+	}
 	nb = ft_atoi(ptr);
 	format->precision = nb;
-	count = 1;
-	if (nb == 0)
-		count++;
 	while (nb > 0)
 	{
 		nb /= 10;
@@ -75,7 +78,7 @@ static int	add_precision(s_format *format, const char *ptr)
 	return (count);
 }
 
-static int	add_specifier(s_format *format, const char *ptr)
+static int	add_specifier(t_format *format, const char *ptr)
 {
 	if (*ptr != 'c'
 		&& *ptr != 's'
@@ -91,11 +94,11 @@ static int	add_specifier(s_format *format, const char *ptr)
 	return (1);
 }
 
-s_format	*init_format(const char **ptr)
+t_format	*init_format(const char **ptr)
 {
-	s_format	*format;
+	t_format	*format;
 
-	format = malloc(sizeof(s_format));
+	format = malloc(sizeof(t_format));
 	if (!format)
 		return (NULL);
 	format->flag_minus = FALSE;

@@ -6,18 +6,41 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:21:42 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/28 20:53:26 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/11/29 00:29:59 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
+static void	ckeck_format(t_format *format)
+{
+	if (format->flag_plus && format->flag_space)
+		format->flag_space = 0;
+	if (format->flag_zero && format->flag_minus)
+		format->flag_zero = 0;
+	if (format->flag_zero && format->precision != -1)
+		format->flag_zero = 0;
+	if ((format->specifier == 'd'
+			|| format->specifier == 'i') && format->flag_hash)
+		format->flag_hash = 0;
+	if ((format->specifier == 'u' || format->specifier == 'x'
+			|| format->specifier == 'X') && format->flag_plus)
+		format->flag_plus = 0;
+	if ((format->specifier == 'c'
+			|| format->specifier == 's') && format->flag_hash)
+		format->flag_hash = 0;
+	if ((format->specifier == 'c'
+			|| format->specifier == 's') && format->flag_zero)
+		format->flag_zero = 0;
+}
+
 static int	process_arg(const char **str, va_list *args)
 {
-	s_format	*format;
+	t_format	*format;
 	int			count;
 
 	format = init_format(str);
+	ckeck_format(format);
 	if (!format)
 		return (1);
 	count = 0;
@@ -37,7 +60,6 @@ static int	process_arg(const char **str, va_list *args)
 		count = print_x(format, va_arg(*args, unsigned int), TRUE);
 	else if (format->specifier == '%')
 		count = ft_putchar('%');
-
 	return (free(format), count);
 }
 
