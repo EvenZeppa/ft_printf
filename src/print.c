@@ -6,7 +6,7 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 01:48:56 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/09 17:50:30 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/12/09 18:48:30 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	print_s(t_format *format, char *str)
 static char	*str_int_precision(char *res, t_format *format, int nb)
 {
 	if (format->precision != -1
-		&& format->precision > ft_strlen(res) - (nb < 0))
+		&& format->precision > (int)ft_strlen(res) - (nb < 0))
 	{
 		res = formatted_number_precision(
 				res, format->precision, format->flag_plus, format->flag_space);
@@ -83,14 +83,15 @@ int	print_d_i(t_format *format, int nb)
 		res[0] = '\0';
 	res = str_int_precision(res, format, nb);
 	if (!(format->precision != -1
-			&& format->precision > ft_strlen(res) - (nb < 0)))
+			&& format->precision > (int)ft_strlen(res) - (nb < 0)))
 	{
 		res = formatted_number_precision(
 				res, -1, format->flag_plus, format->flag_space);
-		if (format->flag_zero && nb < 0 && format->width > ft_strlen(res) + 1)
+		if (format->flag_zero && nb < 0
+			&& format->width > (int)ft_strlen(res) + 1)
 		{
-			res = formatted_width_minus_zero(res,
-					format->width, format->flag_minus, format->flag_zero);
+			res = formatted_width_minus_zero(res, format->width,
+					format->flag_minus, format->flag_zero);
 			res[0] = '-';
 			res[format->width - long_size((long)nb)] = '0';
 		}
@@ -98,6 +99,5 @@ int	print_d_i(t_format *format, int nb)
 			res = formatted_width_minus_zero(
 					res, format->width, format->flag_minus, format->flag_zero);
 	}
-	count = ft_putstr(res);
-	return (free(res), count);
+	return (count = ft_putstr(res), free(res), count);
 }

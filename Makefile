@@ -1,6 +1,5 @@
 CC = gcc
-CFLAGS = -Iinclude/
-# CFLAGS = -Wall -Werror -Wextra -Iinclude/
+CFLAGS = -Wall -Werror -Wextra -Iinclude/
 SRC_DIR = src/
 SRCS =	${SRC_DIR}ft_printf.c\
 		${SRC_DIR}format.c\
@@ -30,6 +29,3 @@ fclean : clean
 re : fclean all
 
 bonus : ${NAME}
-
-main :
-	${CC} ${CFLAGS} ${SRCS} src/main.c -o ft_printf && ./ft_printf
