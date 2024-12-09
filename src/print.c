@@ -6,7 +6,7 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 01:48:56 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/29 00:35:22 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/12/09 17:50:30 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static char	*get_str_null_precision(char *str, int precision)
 	char	*new_str;
 
 	if (str)
-		return (str);
-	if (precision != -1 && precision < 6)
+		new_str = ft_strdup(str);
+	else if (precision != -1 && precision < 6)
 		new_str = ft_strdup("");
 	else
 		new_str = ft_strdup("(null)");
@@ -57,7 +57,7 @@ int	print_s(t_format *format, char *str)
 	ft_strlcpy(res, str, (size + 1));
 	res = formatted_width_minus_zero(res, format->width, format->flag_minus, 0);
 	count = ft_putstr(res);
-	return (free(res), count);
+	return (free(str), free(res), count);
 }
 
 static char	*str_int_precision(char *res, t_format *format, int nb)
@@ -89,9 +89,10 @@ int	print_d_i(t_format *format, int nb)
 				res, -1, format->flag_plus, format->flag_space);
 		if (format->flag_zero && nb < 0 && format->width > ft_strlen(res) + 1)
 		{
-			res = formatted_width_minus_zero(&res[format->flag_zero && nb < 0],
+			res = formatted_width_minus_zero(res,
 					format->width, format->flag_minus, format->flag_zero);
 			res[0] = '-';
+			res[format->width - long_size((long)nb)] = '0';
 		}
 		else
 			res = formatted_width_minus_zero(

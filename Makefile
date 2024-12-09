@@ -32,4 +32,4 @@ re : fclean all
 bonus : ${NAME}
 
 main :
-	${CC} ${CFLAGS} ${SRCS} src/main.c -o ft_printf.exe && ./ft_printf.exe
+	${CC} ${CFLAGS} ${SRCS} src/main.c -o ft_printf && ./ft_printf

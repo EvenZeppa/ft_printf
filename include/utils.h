@@ -6,7 +6,7 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:44:28 by ezeppa            #+#    #+#             */
-/*   Updated: 2024/11/28 21:11:48 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/12/09 17:50:02 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strjoin(const char *s1, const char *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_atoi(const char *nptr);
+long	long_size(long n);
 char	*ft_itoa(long n);
 char	*ft_strdup(const char *s);
 

@@ -6,7 +6,7 @@
 /*   By: ezeppa <ezeppa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 11:56:32 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/28 21:01:26 by ezeppa           ###   ########.fr       */
+/*   Updated: 2024/12/09 17:49:41 by ezeppa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*convert_to_hexa(unsigned long long nb, char *base)
 	return (res);
 }
 
-static long	long_size(long n)
+long	long_size(long n)
 {
 	int	len;
 
